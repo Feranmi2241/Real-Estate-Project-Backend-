@@ -66,6 +66,10 @@ app.use("/api/user-profile", userProfileRouter);
 app.use("/api/auth-test", authTestRouter);
 app.use("/api/debug", debugAuthRouter);
 
+app.get('/', (req, res) => {
+  res.json({ message: 'Backend API is running' });
+});
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
