@@ -41,11 +41,11 @@ app.use(cors({
     'http://127.0.0.1:5173',
     'https://real-estate-project-front-end.vercel.app'
   ],
-  credentials: true,
+  credentials: true,  
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
+still the same problem
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
