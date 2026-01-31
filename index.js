@@ -55,7 +55,6 @@ app.use("/api/user", userRouter);
 app.use("/api/auth", authRouter);
 app.use("/api/listing", listingRouter);
 app.use("/api/analytics", analyticsRouter);
-app.use("/api/admin", transactionRouter);
 app.use("/api/transaction", transactionRouter);
 app.use("/api/transactions", transactionSaveRouter);
 app.use("/api/revenue", revenueRouter);
