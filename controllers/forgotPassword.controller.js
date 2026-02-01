@@ -38,7 +38,8 @@ export const requestResetCode = async (req, res, next) => {
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASS
-      }
+      },
+      timeout: 10000
     });
     
     // Send email
@@ -54,7 +55,12 @@ export const requestResetCode = async (req, res, next) => {
       `
     };
     
-    await transporter.sendMail(mailOptions);
+    await Promise.race([
+      transporter.sendMail(mailOptions),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Email timeout')), 15000)
+      )
+    ]);
     
     res.status(200).json({
       success: true,
